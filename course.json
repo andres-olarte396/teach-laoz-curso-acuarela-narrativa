@@ -1,0 +1,110 @@
+{
+  "id": "teach-laoz-curso-acuarela-narrativa",
+  "title": "Pintura con Acuarela y Narrativa 'Colores para el Alma'",
+  "description": "Curso terapéutico y recreativo diseñado para adultos mayores. Experimenta el placer de mezclar agua y color, reduciendo la ansiedad y estimulando la memoria a través de la narrativa personal.",
+  "level": "Básico",
+  "duration": "10 Horas",
+  "tags": [
+    "Arte",
+    "Salud",
+    "Bienestar",
+    "Adulto Mayor"
+  ],
+  "modules": [
+    {
+      "id": "modulo_0",
+      "title": "Preparación del Nido Creativo",
+      "topics": [
+        {
+          "id": "tema_0.1",
+          "title": "Mi Espacio de Paz",
+          "subtopics": [
+             { "id": "subtema_0.1.1", "title": "La Luz y la Mesa", "file": "modulos/modulo_0/tema_0.1_subtema_0.1.1_contenido.md" },
+             { "id": "subtema_0.1.2", "title": "Mis Herramientas", "file": "modulos/modulo_0/tema_0.1_subtema_0.1.2_contenido.md" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "modulo_1",
+      "title": "El Romance del Agua y el Color",
+      "topics": [
+        {
+          "id": "tema_1.1",
+          "title": "La Danza del Agua",
+          "subtopics": [
+            { "id": "subtema_1.1.1", "title": "Mojando el papel", "file": "modulos/modulo_1/tema_1.1_subtema_1.1.1_contenido.md" },
+            { "id": "subtema_1.1.2", "title": "La Gota de Color", "file": "modulos/modulo_1/tema_1.1_subtema_1.1.2_contenido.md" }
+          ]
+        },
+        {
+          "id": "tema_1.2",
+          "title": "Caminos de Color",
+          "subtopics": [
+            { "id": "subtema_1.2.1", "title": "Líneas que respiran", "file": "modulos/modulo_1/tema_1.2_subtema_1.2.1_contenido.md" },
+            { "id": "subtema_1.2.2", "title": "Mezclando en el papel", "file": "modulos/modulo_1/tema_1.2_subtema_1.2.2_contenido.md" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "modulo_2",
+      "title": "Recuerdos en Azul (Cielos y Aguas)",
+      "topics": [
+        {
+          "id": "tema_2.1",
+          "title": "Mirando al Cielo",
+          "subtopics": [
+            { "id": "subtema_2.1.1", "title": "El Azul de la Mañana", "file": "modulos/modulo_2/tema_2.1_subtema_2.1.1_contenido.md" },
+            { "id": "subtema_2.1.2", "title": "Nubes Pasajeras", "file": "modulos/modulo_2/tema_2.1_subtema_2.1.2_contenido.md" }
+          ]
+        },
+        {
+          "id": "tema_2.2",
+          "title": "El Mar de la Memoria",
+          "subtopics": [
+            { "id": "subtema_2.2.1", "title": "El Horizonte", "file": "modulos/modulo_2/tema_2.2_subtema_2.2.1_contenido.md" },
+            { "id": "subtema_2.2.2", "title": "Olas Suaves", "file": "modulos/modulo_2/tema_2.2_subtema_2.2.2_contenido.md" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "modulo_3",
+      "title": "El Abrazo de la Tierra (Naturaleza)",
+      "topics": [
+        {
+          "id": "tema_3.1",
+          "title": "Árboles Abuelos",
+          "subtopics": [
+             { "id": "subtema_3.1.1", "title": "El Tronco Firme", "file": "modulos/modulo_3/tema_3.1_subtema_3.1.1_contenido.md" },
+             { "id": "subtema_3.1.2", "title": "Hojas al Viento", "file": "modulos/modulo_3/tema_3.1_subtema_3.1.2_contenido.md" }
+          ]
+        },
+        {
+          "id": "tema_3.2",
+          "title": "Flores Silvestres",
+          "subtopics": [
+            { "id": "subtema_3.2.1", "title": "Manchas que son pétalos", "file": "modulos/modulo_3/tema_3.2_subtema_3.2.1_contenido.md" },
+            { "id": "subtema_3.2.2", "title": "El Jardín Imaginario", "file": "modulos/modulo_3/tema_3.2_subtema_3.2.2_contenido.md" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "modulo_4",
+      "title": "Mi Historia en Colores (Proyecto Integrador)",
+      "modules": [], 
+      "topics": [
+        {
+          "id": "tema_4.1",
+          "title": "Componiendo mi Paisaje",
+          "subtopics": [
+             { "id": "subtema_4.1.1", "title": "El fondo y la forma", "file": "modulos/modulo_4/tema_4.1_subtema_4.1.1_contenido.md" },
+             { "id": "subtema_4.1.2", "title": "La Firma del Autor", "file": "modulos/modulo_4/tema_4.1_subtema_4.1.2_contenido.md" }
+          ]
+        }
+      ]
+    }
+  ]
+}
