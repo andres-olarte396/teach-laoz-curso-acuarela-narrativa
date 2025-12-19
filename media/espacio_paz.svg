@@ -1,0 +1,57 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Soft wall color -->
+  <rect x="0" y="0" width="800" height="600" fill="#FDFbf7" />
+
+  <!-- Window -->
+  <rect x="250" y="50" width="300" height="300" fill="#E0F7FA" stroke="#D7CCC8" stroke-width="8" />
+  <!-- Window Pane Cross -->
+  <line x1="400" y1="50" x2="400" y2="350" stroke="#D7CCC8" stroke-width="8" />
+  <line x1="250" y1="200" x2="550" y2="200" stroke="#D7CCC8" stroke-width="8" />
+  
+  <!-- Soft Light Rays (Subtle) -->
+  <path d="M400 200 L200 600 L600 600 Z" fill="url(#lightGradient)" opacity="0.3" />
+  
+  <defs>
+    <linearGradient id="lightGradient" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Wooden Table -->
+  <rect x="0" y="350" width="800" height="250" fill="#8D6E63" />
+  <!-- Wood Grain detail -->
+  <path d="M0 400 Q400 380 800 400" stroke="#795548" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M0 450 Q400 470 800 450" stroke="#795548" stroke-width="2" fill="none" opacity="0.5"/>
+  <path d="M0 550 Q400 530 800 550" stroke="#795548" stroke-width="2" fill="none" opacity="0.5"/>
+
+  <!-- Items on Table -->
+  
+  <!-- Water Jar -->
+  <g transform="translate(500, 380)">
+    <!-- Glass body -->
+    <path d="M10 0 L15 80 L65 80 L70 0 Z" fill="#E1F5FE" stroke="#81D4FA" stroke-width="2" opacity="0.7" />
+    <!-- Water level -->
+    <path d="M11 20 L69 20" stroke="#4FC3F7" stroke-width="2" />
+    <path d="M11 25 Q40 30 69 25" fill="#B3E5FC" opacity="0.5" />
+  </g>
+
+  <!-- Paintbrushes -->
+  <g transform="translate(580, 420) rotate(15)">
+    <!-- Brush 1 -->
+    <rect x="0" y="0" width="120" height="8" fill="#D7CCC8" rx="2" /> <!-- Handle -->
+    <rect x="-10" y="-1" width="10" height="10" fill="#B0BEC5" /> <!-- Ferrule -->
+    <path d="M-20 4 L-10 -1 L-10 9 Z" fill="#5D4037" /> <!-- Bristles -->
+  </g>
+  
+  <g transform="translate(560, 440) rotate(25)">
+     <!-- Brush 2 -->
+    <rect x="0" y="0" width="110" height="6" fill="#F5F5F5" rx="2" /> <!-- Handle -->
+    <rect x="-8" y="-1" width="8" height="8" fill="#B0BEC5" /> <!-- Ferrule -->
+    <path d="M-18 3 L-8 -1 L-8 7 Z" fill="#8D6E63" /> <!-- Bristles -->
+  </g>
+
+  <!-- Paper/Sketchbook -->
+  <rect x="150" y="400" width="200" height="140" fill="#FFFFFF" transform="rotate(-5 250 470)" filter="drop-shadow(3px 3px 2px rgba(0,0,0,0.2))" />
+  
+</svg>

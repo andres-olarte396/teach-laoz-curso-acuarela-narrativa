@@ -1,0 +1,84 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Paper Texture -->
+  <defs>
+    <filter id="paperGrain" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#ffffff" surfaceScale="1.5">
+        <feDistantLight azimuth="45" elevation="60" />
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="#FCFCFC" />
+  <rect x="0" y="0" width="800" height="600" filter="url(#paperGrain)" opacity="0.4" />
+
+  <!-- Watercolor Edge Filter -->
+  <defs>
+    <filter id="watercolorEdge">
+       <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="turbulence" />
+       <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="15" />
+       <feGaussianBlur stdDeviation="1.5" />
+    </filter>
+  </defs>
+
+  <g transform="translate(400, 300)">
+    <!-- 
+      Using explicit Secondary Color patches to ensure beautiful mixing simulation 
+      instead of relying on RGB multiply/screen blending which can look muddy.
+    -->
+
+    <!-- Yellow Spot (Top) -->
+    <circle cx="0" cy="-100" r="110" fill="#FFEE58" opacity="0.8" filter="url(#watercolorEdge)" />
+    
+    <!-- Red Spot (Bottom Right) -->
+    <circle cx="90" cy="60" r="110" fill="#EF5350" opacity="0.8" filter="url(#watercolorEdge)" />
+    
+    <!-- Blue Spot (Bottom Left) -->
+    <circle cx="-90" cy="60" r="110" fill="#42A5F5" opacity="0.8" filter="url(#watercolorEdge)" />
+
+    <!-- MIXING ZONES -->
+    
+    <!-- Orange (Yellow + Red) -->
+    <path d="M 0 -100 A 110 110 0 0 1 90 60 A 110 110 0 0 1 0 -100" 
+          fill="#FB8C00" opacity="0.7" filter="url(#watercolorEdge)" mask="url(#maskOrange)"/>
+    <!-- (Simple approximate placement, refining with intersection simulation) -->
+    <g opacity="0.8">
+        <!-- Intersection of Red and Yellow circles approximation -->
+        <circle cx="45" cy="-20" r="60" fill="#FFA726" filter="url(#watercolorEdge)" opacity="0.6" />
+        <!-- Core deep orange -->
+        <circle cx="45" cy="-20" r="30" fill="#EF6C00" filter="url(#watercolorEdge)" opacity="0.4" />
+    </g>
+
+    <!-- Green (Yellow + Blue) -->
+    <g opacity="0.8">
+         <!-- Intersection of Blue and Yellow -->
+         <circle cx="-45" cy="-20" r="60" fill="#66BB6A" filter="url(#watercolorEdge)" opacity="0.6" />
+         <!-- Core deep green -->
+         <circle cx="-45" cy="-20" r="30" fill="#2E7D32" filter="url(#watercolorEdge)" opacity="0.4" />
+    </g>
+
+    <!-- Violet (Blue + Red) -->
+    <g opacity="0.8">
+        <!-- Intersection of Blue and Red -->
+        <circle cx="0" cy="80" r="60" fill="#AB47BC" filter="url(#watercolorEdge)" opacity="0.6" />
+        <!-- Core deep violet -->
+        <circle cx="0" cy="80" r="30" fill="#6A1B9A" filter="url(#watercolorEdge)" opacity="0.4" />
+    </g>
+    
+    <!-- Center Mud (All three mix) -->
+    <circle cx="0" cy="10" r="40" fill="#5D4037" filter="url(#watercolorEdge)" opacity="0.4" />
+
+  </g>
+  
+  <!-- Labels (Optional, clean handwriting style) -->
+  <style>
+    .label { font-family: 'Segoe Print', 'Brush Script MT', cursive; font-size: 24px; fill: #555; opacity: 0.8; text-anchor: middle; }
+  </style>
+  <text x="400" y="140" class="label">Amarillo</text>
+  <text x="560" y="420" class="label">Rojo</text>
+  <text x="240" y="420" class="label">Azul</text>
+  
+  <text x="500" y="270" class="label" fill="#E65100">Naranja</text>
+  <text x="300" y="270" class="label" fill="#2E7D32">Verde</text>
+  <text x="400" y="440" class="label" fill="#6A1B9A">Violeta</text>
+
+</svg>

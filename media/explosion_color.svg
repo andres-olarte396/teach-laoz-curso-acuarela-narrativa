@@ -1,0 +1,61 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Paper Texture -->
+  <defs>
+    <filter id="paperGrain" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="4" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#ffffff" surfaceScale="1.5">
+        <feDistantLight azimuth="50" elevation="60" />
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="#FFFFFF" />
+  <rect x="0" y="0" width="800" height="600" filter="url(#paperGrain)" opacity="0.3" />
+
+  <!-- The Wet Base (Invisible but implied context) -->
+  
+  <!-- The Explosion (Watercolor Bloom) -->
+  <defs>
+    <!-- Core gradient -->
+    <radialGradient id="coreGradient" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#0D47A1" stop-opacity="1" />   <!-- Deep Blue -->
+      <stop offset="40%" stop-color="#1976D2" stop-opacity="0.9" /> <!-- Medium Blue -->
+      <stop offset="100%" stop-color="#2196F3" stop-opacity="0.8" /> <!-- Lighter Blue -->
+    </radialGradient>
+
+    <!-- Outer diffusion gradient -->
+    <radialGradient id="diffusionGradient" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#2196F3" stop-opacity="0.7" />
+      <stop offset="60%" stop-color="#64B5F6" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#BBDEFB" stop-opacity="0" />
+    </radialGradient>
+
+     <!-- Displacement map for fractal/feathery edges -->
+     <filter id="watercolorDisplacement">
+        <feTurbulence type="turbulence" baseFrequency="0.03" numOctaves="3" result="turbulence"/>
+        <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="40" xChannelSelector="R" yChannelSelector="G"/>
+        <feGaussianBlur stdDeviation="2" />
+    </filter>
+  </defs>
+
+  <g transform="translate(400, 300)">
+    <!-- Outer Diffusion (The "Feathers") -->
+    <path d="M-10 0 Q-50 -100 0 -150 Q50 -100 10 0 Q100 -50 150 0 Q100 50 10 10 Q50 100 0 150 Q-50 100 -10 10 Q-100 50 -150 0 Q-100 -50 -10 0" 
+          fill="url(#diffusionGradient)" transform="scale(1.8)" filter="url(#watercolorDisplacement)" opacity="0.8"/>
+          
+    <path d="M0 -10 Q-30 -80 20 -120 Q60 -70 10 -10 Q90 -30 130 10 Q80 40 10 0 Q40 80 -10 120 Q-60 90 -20 10 Q-110 30 -140 -10 Q-80 -40 0 -10" 
+          fill="url(#diffusionGradient)" transform="rotate(45) scale(1.5)" filter="url(#watercolorDisplacement)" opacity="0.7"/>
+
+    <!-- Mid Layer -->
+    <circle cx="0" cy="0" r="60" fill="url(#diffusionGradient)" filter="url(#watercolorDisplacement)" opacity="0.9"/>
+    
+    <!-- Core Drop (Impact point) -->
+    <circle cx="0" cy="0" r="25" fill="url(#coreGradient)" filter="url(#watercolorDisplacement)" />
+    
+    <!-- Random organic tendrils simulating quick flow -->
+    <path d="M0 0 C20 -40 10 -80 0 -110" stroke="#1E88E5" stroke-width="2" fill="none" opacity="0.5" filter="url(#watercolorDisplacement)"/>
+    <path d="M0 0 C-40 20 -80 10 -110 0" stroke="#1E88E5" stroke-width="2" fill="none" opacity="0.5" filter="url(#watercolorDisplacement)"/>
+    <path d="M0 0 C30 30 70 80 90 90" stroke="#1E88E5" stroke-width="2" fill="none" opacity="0.5" filter="url(#watercolorDisplacement)"/>
+
+  </g>
+
+</svg>

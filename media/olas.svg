@@ -1,0 +1,54 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Paper Texture -->
+  <defs>
+    <filter id="paperRoughness" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="4" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#ffffff" surfaceScale="1.1">
+        <feDistantLight azimuth="45" elevation="60" />
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="#FCFCFC" />
+  <rect x="0" y="0" width="800" height="600" filter="url(#paperRoughness)" opacity="0.3" />
+
+  <!-- Sea Base Wash -->
+  <defs>
+    <linearGradient id="seaBaseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0288D1" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0277BD" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Filter for watery strokes -->
+    <filter id="waveDistort">
+       <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" result="turbulence" />
+       <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="5" />
+       <feGaussianBlur stdDeviation="0.5" />
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="800" height="600" fill="url(#seaBaseGradient)" filter="url(#waveDistort)" opacity="0.85" />
+
+  <!-- Wave Texture Group -->
+  <g transform="translate(0, 0)">
+      <!-- Dark Blue Lines (Depth/Shadows of waves) -->
+      <path d="M50 100 Q100 120 150 100 T250 110 T350 100" stroke="#01579B" stroke-width="3" fill="none" opacity="0.6" filter="url(#waveDistort)" />
+      <path d="M400 150 Q450 170 500 150 T600 160 T700 150" stroke="#01579B" stroke-width="4" fill="none" opacity="0.5" filter="url(#waveDistort)" />
+      <path d="M100 300 Q150 320 200 300 T300 310 T400 300" stroke="#01579B" stroke-width="5" fill="none" opacity="0.4" filter="url(#waveDistort)" />
+      <path d="M500 450 Q550 470 600 450 T700 460 T800 450" stroke="#01579B" stroke-width="6" fill="none" opacity="0.3" filter="url(#waveDistort)" />
+      
+      <!-- Random short strokes -->
+      <path d="M200 200 L250 205" stroke="#01579B" stroke-width="2" opacity="0.5" filter="url(#waveDistort)"/>
+      <path d="M600 350 L660 355" stroke="#01579B" stroke-width="3" opacity="0.5" filter="url(#waveDistort)"/>
+
+      <!-- White Lines (Light/Foam/Sparkle) -->
+      <!-- Simulating dry brush or masking fluid resists -->
+      <path d="M80 120 Q130 110 180 120" stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.4" filter="url(#waveDistort)" />
+      <path d="M380 170 Q430 160 480 170" stroke="#FFFFFF" stroke-width="3" fill="none" opacity="0.3" filter="url(#waveDistort)" />
+      <path d="M120 320 Q170 310 220 320" stroke="#FFFFFF" stroke-width="2" fill="none" opacity="0.5" filter="url(#waveDistort)" />
+      
+      <!-- Scratches / Highlights -->
+      <path d="M550 250 L600 250" stroke="#E1F5FE" stroke-width="4" opacity="0.3" filter="url(#waveDistort)"/>
+      <path d="M300 500 L380 500" stroke="#E1F5FE" stroke-width="5" opacity="0.2" filter="url(#waveDistort)"/>
+  </g>
+
+</svg>

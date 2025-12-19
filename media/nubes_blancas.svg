@@ -1,0 +1,62 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Paper Texture (Visible in the clouds/negative space) -->
+  <defs>
+    <filter id="paperRoughness" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="5" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#ffffff" surfaceScale="1.2">
+        <feDistantLight azimuth="45" elevation="60" />
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="#FFFFFF" />
+  <rect x="0" y="0" width="800" height="600" filter="url(#paperRoughness)" opacity="0.25" />
+
+  <!-- Watercolor Filters -->
+  <defs>
+    <filter id="cloudEdge">
+       <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" result="turbulence" />
+       <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="20" />
+       <feGaussianBlur stdDeviation="3" />
+    </filter>
+    
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#42A5F5" stop-opacity="0.9"/>
+        <stop offset="60%" stop-color="#90CAF9" stop-opacity="0.7"/>
+        <stop offset="100%" stop-color="#E3F2FD" stop-opacity="0.4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Layer with Masking for Clouds -->
+  <mask id="cloudMask">
+      <!-- White canvas = Visible sky -->
+      <rect x="0" y="0" width="800" height="600" fill="white" />
+      
+      <!-- Black shapes = Invisible sky (Paper shows through) -->
+      <g filter="url(#cloudEdge)">
+          <!-- Cloud 1 -->
+          <circle cx="200" cy="150" r="60" fill="black" />
+          <circle cx="260" cy="180" r="50" fill="black" />
+          <circle cx="150" cy="180" r="45" fill="black" />
+          <circle cx="210" cy="200" r="55" fill="black" />
+          
+          <!-- Cloud 2 -->
+          <circle cx="550" cy="100" r="50" fill="black" />
+          <circle cx="620" cy="120" r="60" fill="black" />
+          <circle cx="580" cy="150" r="55" fill="black" />
+          
+          <!-- Cloud 3 (Small) -->
+          <circle cx="700" cy="250" r="30" fill="black" />
+          <circle cx="740" cy="240" r="35" fill="black" />
+      </g>
+  </mask>
+
+  <!-- The Paint -->
+  <rect x="0" y="0" width="800" height="600" fill="url(#skyGradient)" mask="url(#cloudMask)" opacity="0.9" />
+
+  <!-- Soft shadow definition for clouds (bottom edge) implies volume -->
+  <g filter="url(#cloudEdge)" opacity="0.2">
+      <path d="M150 180 Q210 220 270 180" stroke="#1E88E5" stroke-width="10" fill="none"/>
+      <path d="M550 150 Q590 170 630 140" stroke="#1E88E5" stroke-width="8" fill="none"/>
+  </g>
+
+</svg>

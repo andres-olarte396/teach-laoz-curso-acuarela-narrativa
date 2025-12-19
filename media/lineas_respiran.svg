@@ -1,0 +1,65 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Paper Texture -->
+  <defs>
+    <filter id="paperRoughness" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#ffffff" surfaceScale="1.2">
+        <feDistantLight azimuth="45" elevation="50" />
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="#FCFCFC" />
+  <rect x="0" y="0" width="800" height="600" filter="url(#paperRoughness)" opacity="0.35" />
+
+  <!-- The Breathing Line (Stroke simulation) -->
+  <defs>
+    <!-- Gradient for color intensity fading -->
+    <linearGradient id="strokeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#0D47A1" stop-opacity="1" />
+        <stop offset="50%" stop-color="#1E88E5" stop-opacity="0.9" />
+        <stop offset="100%" stop-color="#42A5F5" stop-opacity="0.6" />
+    </linearGradient>
+
+    <!-- Filter for watercolor edge effect -->
+    <filter id="watercolorEdge">
+        <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" result="turbulence" />
+        <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="10" />
+        <feGaussianBlur stdDeviation="0.5" />
+    </filter>
+  </defs>
+
+  <g transform="translate(0, 100)">
+      <!-- 
+        Constructing the shape manually to simulate pressure sensitivity (thick start, thin end)
+        Path traces the top and bottom contour of the stroke.
+      -->
+      <path d="
+        M 100 300 
+        C 150 200, 200 200, 250 300 
+        C 300 400, 350 400, 400 300 
+        C 450 200, 500 200, 550 300 
+        C 600 400, 650 400, 700 300
+        L 705 300
+        C 655 410, 605 410, 550 310
+        C 500 230, 450 230, 400 330
+        C 350 440, 300 440, 250 340
+        C 200 240, 150 240, 100 340
+        Z
+      " fill="url(#strokeGradient)" filter="url(#watercolorEdge)" opacity="0.9" />
+      
+      <!-- Internal "wet" pooling details -->
+      <path d="M 120 310 Q 150 250 180 300" stroke="#0D47A1" stroke-width="2" fill="none" opacity="0.3" filter="url(#watercolorEdge)" />
+      <path d="M 270 320 Q 300 380 330 320" stroke="#1565C0" stroke-width="1.5" fill="none" opacity="0.3" filter="url(#watercolorEdge)" />
+  </g>
+
+  <!-- Brush Tip (Leaving the stroke) -->
+  <g transform="translate(680, 280) rotate(-10)">
+      <path d="M0 0 L150 -5 L150 15 L0 10 Z" fill="#5D4037" rx="5" /> <!-- Handle -->
+      <rect x="0" y="-1" width="30" height="12" fill="#CFD8DC" /> <!-- Ferrule -->
+      <path d="M-30 5 L0 -1 L0 11 Z" fill="#D7CCC8" /> <!-- Bristles base -->
+      <path d="M-28 5 L-5 2 L-5 8 Z" fill="#42A5F5" opacity="0.8" /> <!-- Paint on tip -->
+  </g>
+  
+  <!-- Annotations (Optional, keeping it artistic primarily) -->
+
+</svg>

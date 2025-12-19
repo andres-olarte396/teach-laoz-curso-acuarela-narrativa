@@ -1,0 +1,74 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Paper Texture (Corner context) -->
+  <defs>
+    <filter id="paperRoughness" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="4" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#ffffff" surfaceScale="1.1">
+        <feDistantLight azimuth="45" elevation="60" />
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="#FCFCFC" />
+  <rect x="0" y="0" width="800" height="600" filter="url(#paperRoughness)" opacity="0.3" />
+
+  <!-- Watercolor Art Fragment (Top Left - blurry background to focus on signature) -->
+  <defs>
+    <linearGradient id="artGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#42A5F5" stop-opacity="0.3" />
+        <stop offset="50%" stop-color="#66BB6A" stop-opacity="0.2" />
+        <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <path d="M0 0 L600 0 L0 500 Z" fill="url(#artGradient)" filter="url(#paperRoughness)" />
+
+  <!-- The Signature (Bottom Right Focus) -->
+  <g transform="translate(550, 500) rotate(-5)">
+      <path d="M0 0 Q10 -20 20 0 T40 0" stroke="#3E2723" stroke-width="3" fill="none" stroke-linecap="round" />
+      <path d="M50 -10 L50 10 M50 -5 Q60 0 70 -5" stroke="#3E2723" stroke-width="3" fill="none" stroke-linecap="round" />
+      <path d="M80 0 Q90 -15 100 0 T120 0" stroke="#3E2723" stroke-width="3" fill="none" stroke-linecap="round" />
+  </g>
+
+  <!-- The Hand -->
+  <g transform="translate(560, 350) rotate(10)">
+      <!-- Skin Gradient -->
+      <defs>
+        <radialGradient id="skinGradient" cx="0.5" cy="0.5" r="0.6">
+            <stop offset="0%" stop-color="#FFCCBC" />  <!-- Lighter skin -->
+            <stop offset="100%" stop-color="#D7CCC8" /> <!-- Shadow/Age -->
+        </radialGradient>
+      </defs>
+
+      <!-- Hand Shape (Stylized holding a brush) -->
+      <!-- Wrist -->
+      <path d="M150 250 L250 250 Q280 150 220 100" fill="url(#skinGradient)" opacity="0.95" />
+      
+      <!-- Thumb -->
+      <ellipse cx="160" cy="180" rx="30" ry="50" transform="rotate(-30)" fill="url(#skinGradient)" />
+      <!-- Fingers wrapped -->
+      <ellipse cx="200" cy="150" rx="25" ry="60" transform="rotate(-10)" fill="url(#skinGradient)" />
+      <ellipse cx="230" cy="160" rx="25" ry="55" transform="rotate(5)" fill="url(#skinGradient)" />
+      
+      <!-- Determining Age (Wrinkles and Veins) -->
+      <path d="M180 200 Q200 210 220 200" stroke="#A1887F" stroke-width="2" fill="none" opacity="0.6" />
+      <path d="M150 160 Q170 170 160 190" stroke="#A1887F" stroke-width="2" fill="none" opacity="0.5" />
+      <path d="M220 240 Q230 200 240 150" stroke="#8D6E63" stroke-width="2" fill="none" opacity="0.3" /> <!-- Vein -->
+      
+      <!-- Liver Spots (Age spots) -->
+      <circle cx="200" cy="220" r="3" fill="#8D6E63" opacity="0.4" />
+      <circle cx="240" cy="200" r="4" fill="#8D6E63" opacity="0.4" />
+
+  </g>
+
+  <!-- The Brush -->
+  <g transform="translate(680, 400) rotate(-60)">
+      <!-- Handle -->
+      <rect x="-100" y="-5" width="250" height="10" fill="#3E2723" rx="3" />
+      <!-- Ferrule -->
+      <rect x="150" y="-5" width="30" height="10" fill="#FFECB3" />
+      <!-- Bristles -->
+      <path d="M180 -5 L220 0 L180 5 Z" fill="#D7CCC8" />
+      <!-- Tip with paint -->
+      <path d="M210 -1 L220 0 L210 1 Z" fill="#3E2723" />
+  </g>
+
+</svg>

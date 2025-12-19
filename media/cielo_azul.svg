@@ -1,0 +1,49 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Paper Texture -->
+  <defs>
+    <filter id="paperRoughness" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#ffffff" surfaceScale="1">
+        <feDistantLight azimuth="60" elevation="50" />
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="#FCFCFC" />
+  <rect x="0" y="0" width="800" height="600" filter="url(#paperRoughness)" opacity="0.3" />
+
+  <!-- The Flat Wash (Sky) -->
+  <defs>
+    <!-- 
+       Flat Wash Gradient: 
+       Technically it should be uniform, but watercolor always pools slightly.
+       Top to bottom slight fading to simulate gravity/water movement.
+    -->
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#42A5F5" stop-opacity="0.9" />  <!-- Stronger at top -->
+      <stop offset="80%" stop-color="#64B5F6" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#90CAF9" stop-opacity="0.5" /> <!-- Fading edge -->
+    </linearGradient>
+
+    <!-- Watercolor Edge Filter -->
+    <filter id="washEdge">
+       <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="turbulence" />
+       <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="15" />
+       <feGaussianBlur stdDeviation="1" />
+    </filter>
+  </defs>
+
+  <!-- The Paint Layer -->
+  <!-- Covering top 60% of canvas with organic bottom edge -->
+  <path d="M -10 -10 L 810 -10 L 810 350 Q 600 340 400 360 Q 200 380 -10 350 Z" 
+        fill="url(#skyGradient)" filter="url(#washEdge)" opacity="0.85" />
+
+  <!-- Subtle 'Backruns' or 'Blooms' to make it look like watercolor, not vector -->
+  <g opacity="0.3">
+      <circle cx="200" cy="150" r="40" fill="#BBDEFB" filter="url(#washEdge)" opacity="0.5" />
+      <circle cx="600" cy="100" r="50" fill="#1E88E5" filter="url(#washEdge)" opacity="0.2" />
+  </g>
+
+  <!-- Horizon Line hint (Very subtle) -->
+  <path d="M 0 350 Q 400 360 800 350" stroke="#90CAF9" stroke-width="2" fill="none" opacity="0.5" filter="url(#washEdge)" />
+
+</svg>

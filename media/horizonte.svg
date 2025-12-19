@@ -1,0 +1,55 @@
+<svg width="800" height="600" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background: Paper Texture -->
+  <defs>
+    <filter id="paperRoughness" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" result="noise" />
+      <feDiffuseLighting in="noise" lighting-color="#ffffff" surfaceScale="1.1">
+        <feDistantLight azimuth="45" elevation="60" />
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="800" height="600" fill="#FCFCFC" />
+  <rect x="0" y="0" width="800" height="600" filter="url(#paperRoughness)" opacity="0.3" />
+
+  <!-- Filters for watercolor effect -->
+  <defs>
+    <filter id="waterEdge">
+       <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="turbulence" />
+       <feDisplacementMap in="SourceGraphic" in2="turbulence" scale="8" />
+       <feGaussianBlur stdDeviation="0.8" />
+    </filter>
+    
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E1F5FE" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#B3E5FC" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <linearGradient id="seaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0277BD" stop-opacity="0.9"/> <!-- Darker at horizon -->
+      <stop offset="40%" stop-color="#0288D1" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#4FC3F7" stop-opacity="0.6"/> <!-- Lighter near viewer -->
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Area (Top) -->
+  <rect x="0" y="0" width="800" height="300" fill="url(#skyGradient)" filter="url(#waterEdge)" opacity="0.8" />
+
+  <!-- Sea Area (Bottom) -->
+  <rect x="0" y="300" width="800" height="300" fill="url(#seaGradient)" filter="url(#waterEdge)" opacity="0.9" />
+
+  <!-- Enhanced Horizon Line -->
+  <!-- 
+     A very thin, straight white gap or sharp contrast is often used in watercolor to define the horizon.
+     Here we just have the sharp transition.
+     Let's add a subtle dark line to emphasize it slightly, mimicking the tension of water.
+  -->
+  <line x1="0" y1="300" x2="800" y2="300" stroke="#01579B" stroke-width="1" opacity="0.5" filter="url(#waterEdge)"/>
+
+  <!-- Reflection/Sparkle on water to prevent it looking like a solid block -->
+  <g opacity="0.4">
+     <ellipse cx="200" cy="350" rx="60" ry="2" fill="white" filter="url(#waterEdge)" />
+     <ellipse cx="400" cy="400" rx="80" ry="3" fill="white" filter="url(#waterEdge)" />
+     <ellipse cx="600" cy="320" rx="40" ry="2" fill="white" filter="url(#waterEdge)" />
+  </g>
+
+</svg>
